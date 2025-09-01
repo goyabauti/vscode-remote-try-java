@@ -12,7 +12,7 @@ public class Escudo {
         this.porcentajeEscudo = porcentajeEscudo; //el porcentaje del escudo del getter es el % de escudo que se setea
     }
 
-    public float reducirDaño(float dañoOriginal){
-        return (dañoOriginal * (100 - porcentajeEscudo) / 100); //Escudo = 50% reducirDaño(1) = 1 * (100 - 50) / 100 = 0.5. Bloquea la mitad, pasa medio punto de daño
+    public float reducirDaño(float danioOriginal){
+        return (danioOriginal * (100 - porcentajeEscudo) / 100); //Escudo = 50% reducirDaño(1) = 1 * (100 - 50) / 100 = 0.5. Bloquea la mitad, pasa medio punto de daño
     }
 }

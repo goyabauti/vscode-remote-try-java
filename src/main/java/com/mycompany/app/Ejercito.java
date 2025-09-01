@@ -1,68 +1,74 @@
 package com.mycompany.app;
 
+
 public abstract class Ejercito {
    // atributos
-    private int vida; 
+    private float vida; 
     private Escudo escudo;
+    private ArmaBase arma;
 
 
-public Ejercito(){
+  public Ejercito(){
    // constructor vacio
 
-}
+  }
 
-public Ejercito(int vida){
+  public Ejercito(float vida){
     this.vida = vida; 
-    this.escudo = escudo;
 
-}
 
-public int getVida(){
-    return vida;
-    // devuevle vida
+  }
 
-} 
-
-public void setVida(int vida){
+ public void setVida(float vida){
     this.vida = vida; 
     // metodo que permite asignar un valor a 'vida'
-} 
+  } 
 
-public void setEscudo(Escudo escudo) {   
+
+  public float getVida(){
+    return vida;
+    // devuelve vida
+
+  } 
+
+  public void setEscudo(Escudo escudo) {   
         this.escudo = escudo;
     }
 
     public Escudo getEscudo() {             
         return escudo;
+     }
+
+  public void setArma (ArmaBase arma){
+      this.arma = arma;
+
     }
 
-
- public void recibirDisparo(){
-
-    float daño = 1.00f;
-
-    if (escudo != null){
-      daño = escudo.reducirDaño(daño);
+    public ArmaBase getArma(){
+      return arma;
     }
-      vida -= daño;
-  }
 
-  public boolean estaVivo(){
-    
-    if (vida > 0.000f){
-      return true;
+    public void recibirDisparo(float danio){
+      float efectivo = (escudo != null) ? escudo.reducirDaño(danio) : danio;
+      vida = Math.max(vida - efectivo, 0.0f);
+
     }
-    else{
-      return false;
+
+    public void recibirDisparo(){
+      recibirDisparo(1.0f);
     }
-  }
-  
 
- // Todos disparan (1 de daño base)
-public void disparar(Ejercito objetivo){
-    objetivo.recibirDisparo();
+    public boolean estaVivo(){
+      return vida > 0.0f;
 
-}
+    }
+
+    public void disparar(Ejercito objetivo){
+
+      float danio = (arma != null) ? arma.usar() : 1.0f;
+      objetivo.recibirDisparo(danio); 
+
+    }
 
 
 
