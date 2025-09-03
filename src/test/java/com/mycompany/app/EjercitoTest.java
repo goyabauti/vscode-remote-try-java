@@ -257,6 +257,38 @@ public class EjercitoTest {
 
     }
 
+    @Test
+    void chuck_norris_inmortal(){
+
+        ChuckNorris cn1 = new ChuckNorris();
+    
+        cn1.recibirDisparo();
+
+        assertTrue(cn1.estaVivo());
+
+
+    }
+
+    @Test
+    void soldado_dispara_zombie_inmortal(){
+
+        Zombie z1 = new Zombie();
+        Soldado s1 = new Soldado();
+        ArmaBase bomba = new ArmaBomba();
+
+        s1.setArma(bomba);
+
+        s1.disparar(z1);
+        
+        assertTrue(z1.estaVivo());
+
+
+
+    }
+
+
+
+
 
 }
 
