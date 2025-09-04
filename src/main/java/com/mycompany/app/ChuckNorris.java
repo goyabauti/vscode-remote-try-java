@@ -3,7 +3,7 @@ package com.mycompany.app;
 public class ChuckNorris extends Ejercito  {
 
     public ChuckNorris(){
-        super (1.0f);
+        super(Float.MAX_VALUE);
     }
 
     public ChuckNorris(float vida){
@@ -11,10 +11,11 @@ public class ChuckNorris extends Ejercito  {
    
     }
 
-    @Override
-    public boolean estaVivo(){
-        return true;
-    }
+    public void danioSupremo(Ejercito objetivo){
+        objetivo.recibirDisparo(Float.MAX_VALUE);
+
+
+    }    
 
 
 }

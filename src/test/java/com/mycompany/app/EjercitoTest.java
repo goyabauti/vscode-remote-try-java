@@ -286,9 +286,68 @@ public class EjercitoTest {
 
     }
 
+    @Test
+    void chuck_norris_danioSupremo_vs_tanque(){
+
+        ChuckNorris cn1 = new ChuckNorris();
+        Tanque t1 = new Tanque();
+
+        cn1.danioSupremo(t1);
+        t1.recibirDisparo();
+
+        assertEquals(0.0f, t1.getVida());
+        assertFalse(t1.estaVivo());
+
+    }
+
+
+    @Test
+    void zombie_ataca_soldado_sin_arma(){
+
+        Zombie z1 = new Zombie();
+        Soldado s1 = new Soldado();
+
+        z1.atacarSinArma(s1);
+
+
+        assertEquals(0.5f, s1.getVida());
+        assertTrue(s1.estaVivo());
 
 
 
+
+    }
+
+
+
+    @Test
+    void soldad_ataca_buque_con_escudo2(){
+
+        Soldado s1 = new Soldado();
+        Buque b1 = new Buque();
+        Escudo e1 = new Escudo();
+        ArmaCanon canon = new ArmaCanon();
+        
+        e1.setEscudo(25);
+        s1.setArma(canon);
+        b1.setEscudo(e1);
+
+        s1.disparar(b1);
+
+        assertEquals(1.875, b1.getVida());
+        assertTrue(b1.estaVivo());
+
+        s1.disparar(b1);
+
+        assertEquals(0.75, b1.getVida());
+        assertTrue(b1.estaVivo());
+
+        s1.disparar(b1);
+
+        assertEquals(0.0, b1.getVida());
+        assertFalse(b1.estaVivo());        
+
+    }
 
 }
 

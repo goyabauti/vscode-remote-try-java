@@ -18,6 +18,14 @@ public class Zombie extends Ejercito {
         return true;
     }
 
+    public void atacarSinArma(Ejercito objetivo){
+        objetivo.recibirDisparo( 0.5f);
+
+
+    }
+
+    
+
 
 
 }
