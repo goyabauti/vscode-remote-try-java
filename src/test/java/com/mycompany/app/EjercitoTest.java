@@ -257,70 +257,7 @@ public class EjercitoTest {
 
     }
 
-    @Test
-    void chuck_norris_inmortal(){
-
-        ChuckNorris cn1 = new ChuckNorris();
-    
-        cn1.recibirDisparo();
-
-        assertTrue(cn1.estaVivo());
-
-
-    }
-
-    @Test
-    void soldado_dispara_zombie_inmortal(){
-
-        Zombie z1 = new Zombie();
-        Soldado s1 = new Soldado();
-        ArmaBase bomba = new ArmaBomba();
-
-        s1.setArma(bomba);
-
-        s1.disparar(z1);
-        
-        assertTrue(z1.estaVivo());
-
-
-
-    }
-
-    @Test
-    void chuck_norris_danioSupremo_vs_tanque(){
-
-        ChuckNorris cn1 = new ChuckNorris();
-        Tanque t1 = new Tanque();
-
-        cn1.danioSupremo(t1);
-        t1.recibirDisparo();
-
-        assertEquals(0.0f, t1.getVida());
-        assertFalse(t1.estaVivo());
-
-    }
-
-
-    @Test
-    void zombie_ataca_soldado_sin_arma(){
-
-        Zombie z1 = new Zombie();
-        Soldado s1 = new Soldado();
-
-        z1.atacarSinArma(s1);
-
-
-        assertEquals(0.5f, s1.getVida());
-        assertTrue(s1.estaVivo());
-
-
-
-
-    }
-
-
-
-    @Test
+        @Test
     void soldad_ataca_buque_con_escudo2(){
 
         Soldado s1 = new Soldado();
@@ -348,6 +285,100 @@ public class EjercitoTest {
         assertFalse(b1.estaVivo());        
 
     }
+
+    @Test
+    void buque_vs_tanque_canon2(){
+
+        Buque b1 = new Buque();
+        Tanque t1 = new Tanque();
+        Escudo e1 = new Escudo();
+        ArmaBase canon = new ArmaCanon();
+
+        b1.setArma(canon);
+        e1.setEscudo(75);
+        t1.setEscudo(e1);
+
+        b1.disparar(t1);
+
+        assertEquals(1.625f, t1.getVida());
+        assertTrue(t1.estaVivo());
+
+        e1.setEscudo(25);
+        t1.setEscudo(e1);
+        b1.disparar(t1);
+
+        assertEquals(0.5f, t1.getVida());
+        assertTrue(t1.estaVivo());
+
+        b1.disparar(t1);
+
+        assertEquals(0.0f, t1.getVida());
+        assertFalse(t1.estaVivo());
+
+    }
+
+
+    @Test
+    void chuck_norris_inmortal(){
+
+        ChuckNorris cn1 = new ChuckNorris();
+    
+        cn1.recibirDisparo();
+
+        assertTrue(cn1.estaVivo());
+
+
+    }
+
+    @Test
+    void soldado_dispara_zombie_inmortal(){
+
+        Zombie z1 = new Zombie();
+        Soldado s1 = new Soldado();
+        ArmaBase bomba = new ArmaBomba();
+
+        s1.setArma(bomba);
+
+        s1.disparar(z1);
+        
+        assertTrue(z1.estaVivo());
+
+
+    }
+
+    @Test
+    void chuck_norris_danioSupremo_vs_tanque_con_escudo(){
+
+        ChuckNorris cn1 = new ChuckNorris();
+        Tanque t1 = new Tanque();
+        Escudo e1 = new Escudo();
+
+        e1.setEscudo(100);
+        cn1.danioSupremo(t1);
+
+        assertEquals(0.0f, t1.getVida());
+        assertFalse(t1.estaVivo());
+
+    }
+
+
+    @Test
+    void zombie_ataca_soldado_sin_arma(){
+
+        Zombie z1 = new Zombie();
+        Soldado s1 = new Soldado();
+
+        z1.atacarSinArma(s1);
+
+
+        assertEquals(0.5f, s1.getVida());
+        assertTrue(s1.estaVivo());
+
+    }
+
+    
+
+
 
 }
 

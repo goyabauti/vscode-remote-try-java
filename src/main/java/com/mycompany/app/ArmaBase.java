@@ -18,14 +18,10 @@ public abstract class ArmaBase{
 
   }
 
-    public int getMunicion(){
-        return municion; 
-} 
-
-    public float getdanioBase(){
-        return danioBase; 
-}
-
+  public int getMunicion(){
+     return municion; 
+  } 
+  
 
 
 }
